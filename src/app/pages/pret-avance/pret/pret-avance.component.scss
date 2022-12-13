@@ -126,4 +126,39 @@
    }
 
 
-
+   .i_table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .i_table td > span:nth-of-type(odd) {
+    background: #eee;
+  }
+  
+  .i_table th {
+    background: #333;
+    color: white;
+    font-weight: bold;
+  }
+  
+  td > span {
+    padding: 6px;
+    border: 1px solid #ccc;
+    text-align: left;
+  }
+  
+  @media all and (max-width:500px) {
+  
+    .i_table table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+    }
+  }
+  
+  td > span {
+    display: block;
+  }

@@ -124,12 +124,18 @@ this.getPretAvance()
   } 
 
 
+  onCellClicked(cellData){
+
+this.action(cellData.value)
+    
+  }
+
+
 getgouv1(){
   this.serv.fetchPretAvance(this.idCessionPers).subscribe(
     data1 => {
       this.array =data1;
-     //this.ligbult =this.list.ligBult
-    // this.array=this.list.numSoinParam
+     
 
       console.log("dddd : ",this.array.listCodPret );
      
@@ -141,4 +147,95 @@ getgouv1(){
 
   }
 
+
+
+
+  columnDefs = [
+    {
+      headerName: "N Lig",
+      field: "l_pret",
+      editable: true,
+      resizable: true,
+      sortable: true,
+      filter: true,
+      floatingFilter: true,
+      width: 150,
+    },
+    {
+      headerName: "Type Bulletin",
+      field: "cod_typ_bul",
+      editable: true,
+      resizable: true,
+      sortable: true,
+      filter: true,
+      floatingFilter: true,
+      width: 150,
+    },
+    {
+      headerName: "Libellé",
+      field: "libBulletin",
+      editable: true,
+      resizable: true,
+      sortable: true,
+      filter: true,
+      floatingFilter: true,
+      width: 150,
+    },
+    
+    {
+      headerName: "Date tranche réel",
+      field: "mois_pret_prevu",
+      editable: true,
+      resizable: true,
+      sortable: true,
+      filter: true,
+      floatingFilter: true,
+      width: 150,
+    },
+    {
+      headerName: "Retenue",
+      field: "val_pret",
+      editable: true,
+      resizable: true,
+      sortable: true,
+      filter: true,
+      floatingFilter: true,
+      width: 150,
+    },
+    {
+      headerName: "Rest cap prêt",
+      field: "cap_rest",
+      editable: true,
+      resizable: true,
+      sortable: true,
+      filter: true,
+      floatingFilter: true,
+      width: 150,
+    },
+    {
+      headerName: "Validé",
+      field: "val_pret",
+      editable: true,
+      resizable: true,
+      sortable: true,
+      filter: true,
+      floatingFilter: true,
+      width: 150,
+    },
+    {
+      headerName: "Régler",
+      field: "reg_pret",
+      editable: true,
+      resizable: true,
+      sortable: true,
+      filter: true,
+      floatingFilter: true,
+      width: 150,
+    },
+   
+  
+  ];
+
+  listObject:any
+  modules: Module[] = [ClientSideRowModelModule];
 }
