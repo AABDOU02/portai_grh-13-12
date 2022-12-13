@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <app-page-title title="Solde des congées de : "
+    ><h6 style="color: #001b85"></h6
+  ></app-page-title>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title-desc">
+            <i class="bx bx-user-pin"></i> Consultation bulletin de soin
+          </h2>
+          <table>
+          <tr>
+            <td>
+              <label for="manufacturername">Matricule</label>
+              <input 
+                id="manufacturername"
+                name="manufacturername"
+                type="text"
+                class="form-control"
+                value={{idbesoin.mat_pers}}
+              />
+            </td>
+           <td></td>
+           <td></td>
+       
+                <td>              <label for="manufacturername">Code soins</label>
+
+                    <select (change)="test()"  [(ngModel)]="numsoins" name="option" class="form-control" id="selectAction" *ngIf="array">
+            
+                        <option *ngFor="let op of array"  [ngValue]='op'>
+                              {{ op}}
+                          </option>
+                      </select>
+                </td>
+         </tr>
+       
+        </table>
+          <ag-grid-angular
+            style="display: flex; flex-direction: column; height: 500px"
+            class="ag-theme-alpine"
+            [rowData]="ligbult"
+            [columnDefs]="columnAutorisation"
+            [defaultColDef]="defaultColDef"
+            [pagination]="true"
+            [modules]="modules"
+          >
+          </ag-grid-angular>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,204 @@
+<div class="container-fluid">
+    <div class="checkout-tabs">
+      <div class="row">
+        <div class="col-xl-2 col-sm-3">
+          <ul ngbNav #nav="ngbNav" [activeId]="1" class="nav-pills flex-column">
+            <li [ngbNavItem]="1">
+              <a ngbNavLink>
+                <i class="bx bx-notepad
+                d-block check-nav-icon mt-4 mb-2"></i>
+                <p class="fw-bold mb-4">Agenda de contrat</p>
+              </a>
+              <ng-template ngbNavContent>
+                <div class="container-fluid">
+                  <!-- start page title -->
+  
+                  <!-- end page title -->
+  
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="card-body">
+                          <h1 class="card-title">Agenda Echéance contrat </h1> <h4 style=color:#2a3042;> </h4>
+                          <p class="card-title-desc"> information </p>
+  
+                          <form>
+                            <div class="row">
+                              <div class="col-sm-6 test">
+                                <div class="mb-3">
+                                <div class="app-calendar">
+                                    <!-- calendar -->
+                                    <full-calendar [options]="calendarOptions"></full-calendar>
+                                  </div>                                 
+                                </div>
+  
+                                </div>
+  
+  
+                            </div>
+                            <div class="d-flex flex-wrap gap-2 mt-2">
+  
+  
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+  
+                  
+                    </div>
+                  </div>
+                  <!-- end row -->
+                </div>
+                <!-- container-fluid -->
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="2">
+              <a ngbNavLink>
+                <i class="bx bxs-user d-block check-nav-icon mt-4 mb-2"></i>
+                <p class="fw-bold mb-4">Selectionner par date</p>
+              </a>
+              <ng-template ngbNavContent>
+                <div class="container-fluid">
+                  <!-- start page title -->
+  
+                  <!-- end page title -->
+  
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="card-body">
+                          <h1 class="card-title">Consultation contrat </h1> 
+                          <p class="card-title-desc">Information </p>
+  
+                          <form #gfg = "ngForm">
+                            <div class="row">
+                              <div class="col-sm-6">
+                                <div  class="mb-3">
+                                  <label for="productname"> Date 1</label>
+                                  <input
+                                  [(ngModel)]="date1"
+                                    id="date1"
+                                    name="date1"
+                                    type="date"
+                                    class="form-control"
+                                  
+                                  />
+                                </div>
+                              </div>
+                              
+                              <div class="col-sm-6">
+                                <div    class="mb-3">
+                                  <label for="price">
+                                    Date 2
+                                  </label>
+                                  <input
+                                 
+                                  [(ngModel)]="date2"
+                                    name="date2"
+                                    id="date2"
+
+                                    type="date"
+                                    class="form-control"
+                                  />
+                                  <div class="invalid-feedback">
+
+                                  </div>
+                                 </div>
+                              
+  
+                                 </div>
+                                 <div class="col-sm-6">
+                                    <div    class="mb-3">
+                                      
+                                      <button
+                                      (click)="onGetValue()"  
+                                        
+                                        class="form-control"
+                                        value=""
+                                      >chercher</button>
+                                      <div class="invalid-feedback">
+    
+                                      </div>
+                                     </div>
+                                  
+      
+                                     </div>
+                            </div>
+                            <div class="d-flex flex-wrap gap-2 mt-2">
+  
+  
+                            </div>
+                            <div class="container">
+                            <table class="table align-middle mb-0 table-hover table-responsive" style="  width: 100%;">
+            
+                           
+                              <thead class="bg-light" style="position: sticky;top: 0">
+                                
+                                  <th class="header">Nom Prenom</th>
+                                    <th class="header">Matricule</th>
+
+                                  <th class="header">Date contrat</th>
+                                  
+                                  <th class="header">Date fin contrat</th>
+                                  
+                                  <th class="header">Num contrat</th>
+                                  <th class="header">Type contrat</th>
+                                  
+                                
+                              </thead>
+                              <tbody >
+                               
+                                <tr *ngFor="let item of list" >
+                                  <td>
+                                    <div class="d-flex align-items-center" *ngIf="list">
+                                      <div class="ms-3">
+                                        <p class="" >{{item.nom_pren}} </p>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <p>{{item.mat_pers}}  </p>
+                                  </td>
+                                
+                                  <td>{{item.dat_contrat}}</td>
+                                  <td>{{item.dat_ech}}</td>
+                                  <td>
+                                    <div class="d-flex align-items-center">
+                                      <div class="ms-3">
+                                        <p class="">{{item.num_contrat}}</p>
+                                      </div>
+                                    </div>
+                                  </td>
+                                  <td>
+                                    <p class="fw-normal mb-1">{{item.cod_typ}}</p>
+                                  </td>
+                                 
+                                 
+                                </tr>
+                             
+                              </tbody>
+                            </table></div>
+                          </form>
+                        </div>
+                      </div>
+  
+                     
+                    </div>
+                  </div>
+                  <!-- end row -->
+                </div>
+                <!-- container-fluid -->
+  
+              </ng-template>
+            </li>
+            
+          </ul>
+        </div>
+        
+        <div class="col-lg-10">
+          <div [ngbNavOutlet]="nav"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

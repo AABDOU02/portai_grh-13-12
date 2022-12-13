@@ -1,0 +1,338 @@
+
+<div class="container-fluid">
+    <div class="main-wrapper">
+      <div class="responsive-table">
+    <div class="row">
+      
+      <div class="col-md-2"></div>
+      <div class="col-md-10" >
+        <div class="card-body">
+          <div class="card">
+            <div class="card-body ritekhela-fancy-title-two">
+              <div class="centopp">
+                <table style="border: none">
+                  <tr>
+                    <td>
+                      <h4 style="color: #001b85">
+                        Consultation pret et avance 
+                      </h4>
+                    </td>
+                    <td>
+                 
+                  
+                    </td>
+                  </tr>
+                </table >
+  
+                <hr />
+              
+                <div class="cadre-table-scroll" >
+                <div class="cadre-table-scroll">
+  
+                  <div  style="width:10%">
+                  <label for="manufacturername">Code prêt</label>
+  
+                  <select (change)="test()"  [(ngModel)]="codepret" name="option" class="form-control" id="selectAction" *ngIf="array">
+                    <option>aucun</option>
+                                <option *ngFor="let op of array.listCodPret"  [ngValue]="op" >
+                                      {{ op}}
+                                  </option>
+                              </select>    
+                            </div> 
+  
+                  <br><div class="container">
+                  <table class="table align-middle mb-0 table-hover table-responsive" style="  width: 100%;">
+  
+                 
+                    <thead class="bg-light" style="position: sticky;top: 0">
+                      
+                        <th class="header">N Lig</th>
+                        <th class="header">Type Bulletin</th>
+                        <th class="header">Libellé</th>
+                        
+                        <th class="header">Date tranche réel</th>
+                        <th class="header">Retenue</th>
+                        <th class="header">Rest cap prêt</th>
+                        <th class="header">Validé</th>
+                        <th class="header">Régler</th>
+                      
+                    </thead>
+                    <tbody >
+                     
+                      <tr *ngFor="let item of listlig" (click)="action(item.l_pret)" >
+                        <td>
+                          <div class="d-flex align-items-center" *ngIf="listlig">
+                            <div class="ms-3">
+                              <p class="" >{{item.l_pret}} </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <p>{{item.cod_typ_bul}}  </p>
+                        </td>
+                      
+                        <td>{{item.libBulletin}}</td>
+                        <td>{{item.mois_pret_prevu}}</td>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="ms-3">
+                              <p class="">{{item.val_pret}}</p>
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <p class="fw-normal mb-1">{{item.cap_rest}}</p>
+                        </td>
+                        <td>
+                          {{item.val_pret}}
+                          
+                        </td>
+                        <td> {{item.reg_pret}}</td>
+                        <td></td>
+                      </tr>
+                   
+                    </tbody>
+                  </table></div>
+                </div>
+  
+                <br />
+                <br />
+                <table class="table table-borderless" style="width: 100%" *ngIf="list">
+                  <tbody>
+                  
+                    <tr>
+                      <td scope="row">Organisme prêt</td>
+                      <td *ngIf="list">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputPassword3"
+                          placeholder=""
+                          style="font-size: 12px"
+                          value={{list.org_pret}}
+                        />
+                      </td>
+                      <td scope="row">Libellé Organisme</td>
+                      <td *ngIf="list">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputPassword3"
+                          placeholder=""
+                          style="font-size: 12px"
+                          value={{list.typ_pret}}
+                        />
+                      </td>
+                      <td scope="row"> </td>
+                      <td *ngIf="list">
+                        <input 
+                          type="text"
+                          class="form-control"
+                          id="inputPassword3"
+                          placeholder=""
+                          style="font-size: 12px"
+                          value=""
+  
+                        />
+                      </td>
+                      <td scope="row">Délai grâce</td>
+                      <td *ngIf="list">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputPassword3"
+                          placeholder=""
+                          style="font-size: 12px"
+                          value={{list.delai_grace}}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td scope="row">Etat prêt</td>
+                      <td *ngIf="list">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputPassword3"
+                          placeholder=""
+                          style="font-size: 12px"
+                          value={{list.cod_etat_pret}}
+                        />
+                      </td>
+                      <td scope="row">Montant global</td>
+                      <td *ngIf="list">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputPassword3"
+                          placeholder=""
+                          style="font-size: 12px"
+                          value={{list.prt_mnt_glb}}
+                          
+                        />
+                      </td>
+                      <td scope="row">Date début</td>
+                      <td *ngIf="list">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputPassword3"
+                          placeholder=""
+                          style="font-size: 12px"
+                          value={{list.prt_dat_deb}}
+                        />
+                      </td>
+                      <td scope="row">Date fin</td>
+                      <td *ngIf="list">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputPassword3"
+                          placeholder=""
+                          style="font-size: 12px"
+                          value={{list.prt_dat_fin}}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td scope="row">Groupe prêt</td>
+                      <td *ngIf="list">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputPassword3"
+                          placeholder=""
+                          style="font-size: 12px"
+                          value={{list.cod_grp_pret}}
+  
+                        />
+                      </td>
+                      <td scope="row">Taux</td>
+                      <td>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputPassword3"
+                          placeholder=""
+                          style="font-size: 12px"
+                          value={{list.prt_taux}}
+                        />
+                      </td>
+                      <td scope="row">Echéance</td>
+                      <td *ngIf="list">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputPassword3"
+                          placeholder=""
+                          style="font-size: 12px"
+                          value={{list.prt_ech}}
+                        />
+                      </td>
+                      <td scope="row">Réference prêt</td>
+                      <td *ngIf="list">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputPassword3"
+                          placeholder=""
+                          style="font-size: 12px"
+                          value={{list.ref_pret}}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td scope="row">Code prêt</td>
+                      <td *ngIf="list">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputPassword3"
+                          placeholder=""
+                          style="font-size: 12px"
+                          value={{list.cod_pret}}
+                        />
+                      </td>
+                      <td scope="row">Libellé prêt</td>
+                      <td *ngIf="list">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputPassword3"
+                          placeholder=""
+                          style="font-size: 12px"
+                          value={{list.lib_pret}}
+                        />
+                      </td>
+                     <!--  <td scope="row">Code Prêt</td>
+                      <td *ngIf="list">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputPassword3"
+                          placeholder=""
+                          style="font-size: 12px"
+                          value={{list.ligPretPers[0].cod_pret}}
+                        />
+                      </td> -->
+                      <td scope="row">Date accord</td>
+                      <td *ngIf="list">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputPassword3"
+                          placeholder=""
+                          style="font-size: 12px"
+                          value={{list.prt_dat_acc}}
+                        />
+                      </td>
+                    </tr>
+                    <tr>
+                      <td scope="row">Date saisie</td>
+                      <td *ngIf="list">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputPassword3"
+                          placeholder=""
+                          style="font-size: 12px"
+                          value={{list.dat_saisie}}
+                        />
+                      </td>
+                      <td scope="row">Rendu</td>
+                      <td *ngIf="list">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputPassword3"
+                          placeholder=""
+                          style="font-size: 12px"
+                          value={{list.prt_rendu}}
+                          
+                        />
+                      </td >
+               <!--        <td scope="row">Repliquat</td>
+                      <td *ngIf="list">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="inputPassword3"
+                          placeholder=""
+                          style="font-size: 12px"
+                          value={{list.ref_pret}}
+  
+                        />
+                      </td> -->
+                    
+                    </tr>
+                   
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div></div>
