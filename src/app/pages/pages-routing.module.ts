@@ -11,6 +11,7 @@ import { EcheanceContratComponent } from './contrat/echeance-contrat/echeance-co
 
 import { DefaultComponent } from './dashboards/default/default.component';
 import { MiseAObejectifComponent } from './objectifs/mise-a-obejectif/mise-a-obejectif.component';
+import { EditionRetardComponent } from './retard/edition-retard/edition-retard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/account/login',pathMatch: 'full'  },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'contrat/echeance-contrat', component: EcheanceContratComponent },
   { path: 'objectifs/mise-a-obejectif', component: MiseAObejectifComponent },
   { path: 'competences/consltmanager', component: ConsltmanagerComponent },
+  { path: 'retard/edition-retard', component: EditionRetardComponent },
 
   
 

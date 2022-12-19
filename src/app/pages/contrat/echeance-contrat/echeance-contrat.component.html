@@ -24,21 +24,16 @@
   
                           <form>
                             <div class="row">
-                              <div class="col-sm-6 test">
-                                <div class="mb-3">
-                                <div class="app-calendar">
-                                    <!-- calendar -->
-                                    <full-calendar [options]="calendarOptions"></full-calendar>
-                                  </div>                                 
+                              <div class="col-12">
+                                <div class="card">
+                                  <div class="card-body">
+                                    <div class="app-calendar">
+                                      <!-- calendar -->
+                                      <full-calendar [options]="calendarOptions"></full-calendar>
+                                    </div>
+                                  </div>
                                 </div>
-  
-                                </div>
-  
-  
-                            </div>
-                            <div class="d-flex flex-wrap gap-2 mt-2">
-  
-  
+                              </div>
                             </div>
                           </form>
                         </div>
@@ -128,65 +123,32 @@
   
   
                             </div>
-                            <div class="container">
-                            <table class="table align-middle mb-0 table-hover table-responsive" style="  width: 100%;">
-            
                            
-                              <thead class="bg-light" style="position: sticky;top: 0">
-                                
-                                  <th class="header">Nom Prenom</th>
-                                    <th class="header">Matricule</th>
-
-                                  <th class="header">Date contrat</th>
-                                  
-                                  <th class="header">Date fin contrat</th>
-                                  
-                                  <th class="header">Num contrat</th>
-                                  <th class="header">Type contrat</th>
-                                  
-                                
-                              </thead>
-                              <tbody >
-                               
-                                <tr *ngFor="let item of list" >
-                                  <td>
-                                    <div class="d-flex align-items-center" *ngIf="list">
-                                      <div class="ms-3">
-                                        <p class="" >{{item.nom_pren}} </p>
-                                      </div>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <p>{{item.mat_pers}}  </p>
-                                  </td>
-                                
-                                  <td>{{item.dat_contrat}}</td>
-                                  <td>{{item.dat_ech}}</td>
-                                  <td>
-                                    <div class="d-flex align-items-center">
-                                      <div class="ms-3">
-                                        <p class="">{{item.num_contrat}}</p>
-                                      </div>
-                                    </div>
-                                  </td>
-                                  <td>
-                                    <p class="fw-normal mb-1">{{item.cod_typ}}</p>
-                                  </td>
-                                 
-                                 
-                                </tr>
-                             
-                              </tbody>
-                            </table></div>
+                          
+                         
                           </form>
                         </div>
                       </div>
   
                      
                     </div>
+                    <div class="row">
+                      <div class="col-12">
+                      <ag-grid-angular
+                      style="display: flex; flex-direction: column; height: 500px"
+                      class="ag-theme-alpine"
+                      [rowData]="list"
+                      [columnDefs]="columnContrat"
+                      [pagination]="true"
+                      [modules]="modules"
+            
+                    >
+                    </ag-grid-angular>
+                    </div></div>
                   </div>
                   <!-- end row -->
                 </div>
+              
                 <!-- container-fluid -->
   
               </ng-template>

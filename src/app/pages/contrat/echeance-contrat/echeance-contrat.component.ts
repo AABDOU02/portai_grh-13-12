@@ -1,5 +1,5 @@
-import { DatePipe } from '@angular/common';
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { DatePipe, formatDate } from '@angular/common';
+import { Component, Inject, LOCALE_ID, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CalendarOptions, EventApi, EventClickArg } from '@fullcalendar/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -7,7 +7,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TokenStorage } from 'src/app/core/services/token-storage.service';
 import Swal from 'sweetalert2';
 import { EcheanceContratService } from '../echeance-contrat.service';
-
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { Module } from '@ag-grid-community/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-echeance-contrat',
@@ -103,7 +105,8 @@ export class EcheanceContratComponent implements OnInit {
     private formBuilder: FormBuilder,
     private serv :EcheanceContratService,
     private tokenService:TokenStorage,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    @Inject(LOCALE_ID) private locale: string
   ) {
 
   }
@@ -264,6 +267,116 @@ fetchListContrat(){
     this.submitted = false;
   }
 
+  columnContrat = [
+    { headerName: "Nom Prenom", 
+    field: "nom_pren", 
+    editable: true,
+    floatingFilter: true,   
+       filter:true,
 
+  },
+  { headerName: "Matricule", 
+    field: "mat_pers", 
+    editable: true,
+    floatingFilter: true,   
+       filter:true,
+
+  },
+
+    {
+     headerName:"Date contrat",
+      field: "dat_contrat",
+      filter: "agDateColumnFilter",
+      sortable:true,
+      floatingFilter: true,
+      
+      filterParams: {
+        // provide comparator function
+        comparator: function (filterLocalDateAtMidnight: any, cellValue: any) {
+          var dateAsString = cellValue;
+         
+          if (dateAsString == null) {
+            return 0;
+          }
+
+          // In the example application, dates are stored as dd/mm/yyyy
+          // We create a Date object for comparison against the filter date
+          var dateParts = dateAsString.split("-");
+          var year = Number(dateParts[2]);
+          var month = Number(dateParts[1]) - 1;
+          var day = Number(dateParts[0]);
+          var cellDate = new Date(year, month, day);
+
+          // Now that both parameters are Date objects, we can compare
+          if (cellDate < filterLocalDateAtMidnight) {
+            return -1;
+          } else if (cellDate > filterLocalDateAtMidnight) {
+            return 1;
+          }
+          return 0;
+        },
+      },
+      editable: true,
+      cellEditor: "primeCellEditor",
+    },
+    
+    {
+      headerName:"Date fin contrat",
+       field: "dat_ech",
+       filter: "agDateColumnFilter",
+       sortable:true,
+       floatingFilter: true,
+       filterParams: {
+         // provide comparator function
+         comparator: function (filterLocalDateAtMidnight: any, cellValue: any) {
+           var dateAsString = cellValue;
+ 
+           if (dateAsString == null) {
+             return 0;
+           }
+ 
+           // In the example application, dates are stored as dd/mm/yyyy
+           // We create a Date object for comparison against the filter date
+           var dateParts = dateAsString.split("-");
+           var year = Number(dateParts[2]);
+           var month = Number(dateParts[1]) - 1;
+           var day = Number(dateParts[0]);
+           var cellDate = new Date(year, month, day);
+ 
+           // Now that both parameters are Date objects, we can compare
+           if (cellDate < filterLocalDateAtMidnight) {
+             return -1;
+           } else if (cellDate > filterLocalDateAtMidnight) {
+             return 1;
+           }
+           return 0;
+         },
+       },
+       editable: true,
+       cellEditor: "primeCellEditor",
+     },
+  {
+    headerName: "Num contrat",
+    field: "num_contrat",
+    editable: true,
+    floatingFilter: true,
+
+    
+  },
+  {
+    headerName: "Type contrat",
+    field: "cod_typ",
+    editable: true,
+    floatingFilter: true,
+
+    
+  },
+    
+  ];
+  modules: Module[] = [ClientSideRowModelModule];
+  defaultColDef = {
+    sortable: true,
+    filter: true,
+  };
 
 }

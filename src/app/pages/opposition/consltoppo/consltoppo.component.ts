@@ -5,6 +5,8 @@ import { LigbsoinService } from '../../bsoin/services/ligbsoin.service';
 import { PersonnelService } from '../../Employe/personnel.service';
 import { CessionPers } from '../model/CessionPers';
 import { OppositionserviceService } from '../services/oppositionservice.service';
+import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { Module } from '@ag-grid-community/core';
 
 @Component({
   selector: 'app-consltoppo',
@@ -152,7 +154,7 @@ export class ConsltoppoComponent implements OnInit {
     console.log("test : ",this.idCessionPers.cod_pret);
   } 
 
-  getgouv(){
+/*   getgouv(){
     this.serv1.bultSoinDet(this.idCessionPers).subscribe(
       data => {
         this.list =data;
@@ -168,7 +170,7 @@ export class ConsltoppoComponent implements OnInit {
       }
       );
 }
-
+ */
 
 getgouv1(){
   this.serv.fetchListCodPret(this.token.getUser().cod_soc,this.token.getUser().matpers).subscribe(
@@ -186,5 +188,92 @@ getgouv1(){
     );
 
   }
+  columnDefs = [
+    {
+      headerName: "N Lig",
+      field: "l_pret",
+      editable: true,
+      resizable: true,
+      sortable: true,
+      filter: true,
+      floatingFilter: true,
+      width: 150,
+    },
+    {
+      headerName: "Type Bulletin",
+      field: "cod_typ_bul",
+      editable: true,
+      resizable: true,
+      sortable: true,
+      filter: true,
+      floatingFilter: true,
+      width: 150,
+    },
+    {
+      headerName: "Libellé",
+      field: "libBulletin",
+      editable: true,
+      resizable: true,
+      sortable: true,
+      filter: true,
+      floatingFilter: true,
+      width: 150,
+    },
+    
+    {
+      headerName: "Date tranche réel",
+      field: "mois_pret_prevu",
+      editable: true,
+      resizable: true,
+      sortable: true,
+      filter: true,
+      floatingFilter: true,
+      width: 150,
+    },
+    {
+      headerName: "Retenue",
+      field: "val_pret",
+      editable: true,
+      resizable: true,
+      sortable: true,
+      filter: true,
+      floatingFilter: true,
+      width: 150,
+    },
+    {
+      headerName: "Rest cap prêt",
+      field: "cap_rest",
+      editable: true,
+      resizable: true,
+      sortable: true,
+      filter: true,
+      floatingFilter: true,
+      width: 150,
+    },
+    {
+      headerName: "Validé",
+      field: "val_pret",
+      editable: true,
+      resizable: true,
+      sortable: true,
+      filter: true,
+      floatingFilter: true,
+      width: 150,
+    },
+    {
+      headerName: "Régler",
+      field: "reg_pret",
+      editable: true,
+      resizable: true,
+      sortable: true,
+      filter: true,
+      floatingFilter: true,
+      width: 150,
+    },
+   
+  
+  ];
 
+  listObject:any
+  modules: Module[] = [ClientSideRowModelModule];
 }

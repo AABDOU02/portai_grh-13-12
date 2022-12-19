@@ -42,6 +42,7 @@ import { EmployeModule } from "./Employe/Employe.module";
 import { MiseAObejectifComponent } from './objectifs/mise-a-obejectif/mise-a-obejectif.component';
 import { AgGridModule } from '@ag-grid-community/angular';
 import { ConsltmanagerComponent } from './competences/consltmanager/consltmanager.component';
+import { EditionRetardComponent } from './retard/edition-retard/edition-retard.component';
 
 
 
@@ -53,7 +54,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 ]);
 
 @NgModule({
-    declarations: [CalendarComponent, ChatComponent, ConsltoppoComponent,EcheanceContratComponent, MiseAObejectifComponent, ConsltmanagerComponent],
+    declarations: [CalendarComponent, ChatComponent, ConsltoppoComponent,EcheanceContratComponent, MiseAObejectifComponent, ConsltmanagerComponent, EditionRetardComponent],
     imports: [
         CommonModule,
         ConsltoppoModule,

@@ -12,29 +12,15 @@ export class LigbsoinService {
 
   constructor(private http: HttpClient) {
 
-   // this.id=new Idbsoin("01","07766",10,"15/12/2012");
   
    }
 
 
-  
-  fetchCession(){
+ 
+   bultSoinDet(codSoc : any ,matPers:any,numSoins:any){
 
-    return this.http.get('http://192.168.2.232:8080/api/auth/getligB/')
+    return this.http.get<any[]>(AUTH_API + '/api/bsoindet/'+codSoc+"/"+matPers+'/'+numSoins)
   
-    
-   }
-  
-   fetchCessionBultsoin(){
-
-    return this.http.get('http://192.168.2.232:8080/api/auth/getM/')
-  
-    
-   }
-   bultSoinDet(s:any){
-
-    return this.http.post<any[]>('http://192.168.2.232:8080/bultSoin/bsoindet',s);
-
    }
    
    fetchListCodPret(codSoc : any ,matPers:any){
@@ -43,5 +29,30 @@ export class LigbsoinService {
   
     
    }
-   
+   fetchListBulletSoin(codSoc : any ,matPers:any){
+
+    return this.http.get<any[]>(AUTH_API + '/api/getbultlist/'+codSoc+'/'+matPers)
+  
+    
+   }
+
+   fetchListBulletSoinStar(codSoc : any ,matPers:any){
+
+    return this.http.get<any[]>(AUTH_API + '/api/getbultsoinstar/'+matPers+"/"+codSoc)
+  
+    
+   }
+
+   fetchLigBulletSoinStar(codSoc : any ,matPers:any){
+
+    return this.http.get<any[]>(AUTH_API + '/api/getligbultstarlist/'+codSoc+"/"+matPers)
+  
+    
+   }
+   fetchLigbultStarDetList(codSoc : any ,matPers:any,numSoin:any){
+
+    return this.http.get<any[]>(AUTH_API + '/api/getligbultstardetlist/'+codSoc+"/"+matPers+'/'+numSoin)
+  
+    
+   }
 }
